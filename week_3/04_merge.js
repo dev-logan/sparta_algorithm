@@ -37,3 +37,4 @@ function merge(array1, array2) {
 // console.log(merge(array1, array2))
 
 module.exports = merge
+// export { merge }

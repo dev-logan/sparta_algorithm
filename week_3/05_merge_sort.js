@@ -1,4 +1,5 @@
 const merge = require('./04_merge')
+// import { merge } from './04_merge.js'
 
 const array = [5, 3, 2, 1, 6, 8, 7, 4]
 
