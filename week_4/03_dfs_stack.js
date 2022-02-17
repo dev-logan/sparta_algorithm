@@ -1,15 +1,15 @@
-function dfs_stack(adjacent_graph, start_node) {
-    const stack = []
+function dfsStack(graph, startNode) {
+    const toVisit = []
     const visited = []
 
-    stack.push(start_node)
+    toVisit.push(startNode)
 
-    while (stack.length) {
-        const cur_node = stack.pop()
-        visited.push(cur_node)
-        for (const adjacent_node of adjacent_graph[cur_node]) {
-            if (!visited.includes(adjacent_node)) {
-                stack.push(adjacent_node)
+    while (toVisit.length) {
+        const curNode = toVisit.pop()
+        visited.push(curNode)
+        for (const adjacentNode of graph[curNode]) {
+            if (!visited.includes(adjacentNode)) {
+                toVisit.push(adjacentNode)
             }
         }
     }
@@ -31,5 +31,5 @@ const graph = {
     10: [9],
 }
 
-console.log(dfs_stack(graph, 1)) // 1 이 시작노드입니다!
+console.log(dfsStack(graph, 1)) // 1 이 시작노드입니다!
 // [1, 9, 10, 5, 8, 6, 7, 2, 3, 4] 이 출력되어야 합니다!
