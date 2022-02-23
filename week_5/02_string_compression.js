@@ -1,4 +1,6 @@
-const string = 'AZAAAZDWAAA'
+const string = 'A'
+
+if (string.length === 1) return console.log(1)
 
 let minimumLength = 1000
 for (let i = 1; i <= string.length / 2; i++) {

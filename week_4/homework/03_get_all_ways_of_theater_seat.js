@@ -1,25 +1,25 @@
-function fibo(n, fibo_memo) {
-	if (!fibo_memo[n]) {
-		return (fibo_memo[n] = fibo(n - 2, fibo_memo) + fibo(n - 1, fibo_memo))
-	} else {
-		return fibo_memo[n]
-	}
-}
-
 function get_all_ways_of_theater_seat(count, vip) {
-	const seatGroups = [vip[0] - 1, count - vip[vip.length - 1]]
-	for (let i = 1; i < vip.length; i++) {
-		seatGroups.push(vip[i] - vip[i - 1] - 1)
-	}
 	const fibo_memo = {
-		1: 1,
-		2: 2,
-	}
-	let result = 1
-	for (const seat of seatGroups) {
-		result *= fibo(seat, fibo_memo)
-	}
-	return result
+        0: 1,
+        1: 1,
+        2: 2,
+    }
+    
+    for (let i = 3; i <= count; i++) {
+        fibo_memo[i] = fibo_memo[i - 1] + fibo_memo[i - 2]
+    }
+    
+    if (vip.length === 0) {
+        console.log(fibo_memo[count])
+        return
+    }
+    
+    const seatGroups = [vip[0] - 1, count - vip[vip.length - 1]]
+    for (let i = 1; i < vip.length; i++) {
+        seatGroups.push(vip[i] - vip[i - 1] - 1)
+    }
+    
+    return (seatGroups.reduce((acc, value) => acc * fibo_memo[value], 1))
 }
 
 const count = 9
